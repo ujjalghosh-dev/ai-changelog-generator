@@ -14,6 +14,18 @@ app.get('/', (req, res) => {
             <button onclick="generate()" style="padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer;">Generate Changelog</button>
             <h3>Result:</h3>
             <pre id="result" style="background: #f4f4f4; padding: 15px; white-space: pre-wrap;"></pre>
+            <button onclick="copyChangelog()" style="margin-top: 10px; padding: 8px 16px; background: #2ea44f; color: white; border: none; border-radius: 4px; cursor: pointer;">Copy Changelog</button>
+
+<script>
+  function copyChangelog() {
+    const resultText = document.getElementById('result').innerText;
+    navigator.clipboard.writeText(resultText).then(() => {
+      alert('Changelog copied to clipboard!');
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+    });
+  }
+</script>
         </div>
         <script>
             async function generate() {
